@@ -33,7 +33,7 @@ describe("store", () => {
 
 describe("selectors", () => {
   describe(findItem, () => {
-    test("works", () => {
+    it("selects an item by id", () => {
       // Arrange
       const storeApi = createStoreApi({
         items: [{ id: "item01", message: "test message", completed: false }],
@@ -45,10 +45,21 @@ describe("selectors", () => {
       // Assert
       expect(result).toBeTruthy();
     });
+
+    it("throw error if specified item does not exist", () => {
+      // Arrange
+      const storeApi = createStoreApi({ items: [] });
+
+      // Act
+      const act = () => findItem("item")(storeApi.getState())
+
+      // Assert
+      expect(act).toThrow();
+    });
   });
 
   describe(getNotCompletedItems, () => {
-    test("works", () => {
+    it("filters not completed items", () => {
       // Arrange
       const storeApi = createStoreApi({
         items: [

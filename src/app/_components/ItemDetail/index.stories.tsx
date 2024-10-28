@@ -8,14 +8,13 @@ const meta = {
       items: [{ id: "item01", message: "message", completed: false }],
     },
   },
+  args: {
+    id: "item01",
+  },
 } satisfies Meta<typeof ItemDetail>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default = {
-  args: {
-    id: "item01",
-  },
-} satisfies Story;
+export const Default = {} satisfies Story;
