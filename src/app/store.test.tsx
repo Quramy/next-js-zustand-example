@@ -51,7 +51,7 @@ describe("selectors", () => {
       const storeApi = createStoreApi({ items: [] });
 
       // Act
-      const act = () => findItem("item")(storeApi.getState())
+      const act = () => findItem("item")(storeApi.getState());
 
       // Assert
       expect(act).toThrow();

@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 
 import { useStore } from "./store";
-import { ItemList } from "./_components/ItemList";
+import { ItemList as _ItemList } from "./_components/ItemList";
+
+const ItemList = memo(_ItemList);
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -16,6 +18,7 @@ export default function Home() {
       </section>
       <form
         action={() => {
+          if (!message) return;
           setMessage("");
           addItem(message);
         }}
